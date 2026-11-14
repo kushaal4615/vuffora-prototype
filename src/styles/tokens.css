@@ -1,0 +1,236 @@
+/* VUFFORA tokens. Direction: SUNSHINE & ROYAL, a custom row derived from
+   the client's own brand: the logo's golden yellow (#FFC605, sampled from
+   the app icon), royal blue for every action, white surfaces.
+   Fredoka (display, echoes the rounded wordmark) + Plus Jakarta Sans
+   (text) + DM Mono (meta). Radius hierarchy 28 / 20 / 14 / 999,
+   springy-overshoot motion.
+   Three layers: primitive → semantic → component. Every surface token
+   ships with its paired foreground (on-*) token. Single LIGHT theme.
+   Temperament states (calm / reactive) are first-class tokens because
+   pricing, matching and safety all hang off them. */
+
+:root {
+  /* ── Primitives ─────────────────────────────────────────── */
+  --paper-50: #fffcf1;   /* base: white warmed 3% by the brand yellow */
+  --paper-0: #ffffff;    /* surface */
+  --paper-100: #faf8f1;  /* raised */
+  --paper-200: #f2efe3;  /* high / sunk */
+  --paper-300: #e5e1d2;
+  --paper-400: #c9c5b4;
+  --paper-500: #99958a;
+
+  --blue-50: #eef2ff;
+  --blue-100: #dce4ff;   /* accent soft */
+  --blue-200: #bccbff;
+  --blue-300: #8fa6ff;   /* highlight on dark */
+  --blue-400: #5e7bf5;
+  --blue-500: #3a5be8;
+  --blue-600: #2348d6;   /* royal blue, the action colour: white text 6.9:1 */
+  --blue-700: #1a35a8;
+  --blue-800: #14297f;
+  --blue-900: #0e1b57;   /* ink surface */
+  --blue-950: #0a1238;   /* night */
+
+  --sun-50: #fff9e0;
+  --sun-100: #fff0b8;
+  --sun-200: #ffe27a;
+  --sun-300: #ffd43b;    /* sun on ink: 11:1 */
+  --sun-500: #ffc605;    /* the brand yellow: ink text 12:1 */
+  --sun-600: #e0a800;
+  --sun-700: #8a6400;    /* sun as text on white: 5.3:1 */
+  --sun-800: #5c4300;
+
+  --green-500: #1f9d61;
+  --green-600: #167a4a;  /* 5.4:1 on white */
+  --green-100: #d8f3e4;
+  --green-800: #0e4f30;
+
+  --coral-500: #e5484d;
+  --coral-600: #c2333a;  /* 5.6:1 on white */
+  --coral-100: #fde0e1;
+  --coral-800: #7a1b20;
+
+  --amber-600: #b45309;
+  --amber-100: #fdecc8;
+  --amber-800: #6b3a00;
+
+  --teal-600: #0e7490;
+  --teal-100: #d5f3f6;
+  --teal-800: #0b4a5c;
+
+  --ink-text: #14172b;
+  --ink-text-2: #4a5068; /* 7.9:1 on white */
+  --ink-text-3: #5f6680; /* 5.6:1 on white */
+
+  /* ── Semantic ───────────────────────────────────────────── */
+  --bg: var(--paper-50);
+  --bg-sunk: var(--paper-200);
+  --surface: var(--paper-0);
+  --surface-raised: var(--paper-100);
+  --surface-high: var(--paper-200);
+  --surface-tint: var(--blue-50);
+
+  --text: var(--ink-text);
+  --text-2: var(--ink-text-2);
+  --text-3: var(--ink-text-3);
+  --rule: rgb(14 27 87 / 0.1);
+  --rule-strong: rgb(14 27 87 / 0.2);
+
+  /* paired surfaces */
+  --ink: var(--blue-900);
+  --on-ink: #ffffff;
+  --on-ink-2: #c3ccf2;   /* 9:1 on ink */
+
+  --night: var(--blue-950);
+  --on-night: #ffffff;
+  --on-night-2: #b4bde6;
+
+  --accent: var(--blue-600);
+  --on-accent: #ffffff;
+  --on-accent-2: #dce4ff; /* 5.4:1 on accent */
+  --accent-text: var(--blue-600);
+  --accent-soft: var(--blue-100);
+  --on-accent-soft: var(--blue-800);
+
+  --sun: var(--sun-500);
+  --on-sun: var(--ink-text);
+  --sun-text: var(--sun-700);
+  --sun-soft: var(--sun-100);
+  --on-sun-soft: var(--sun-800);
+  --sun-light: var(--sun-300); /* yellow used as text/line on ink and night */
+
+  /* temperament: calm vs reactive */
+  --calm: var(--green-500);
+  --calm-text: var(--green-600);
+  --calm-soft: var(--green-100);
+  --on-calm-soft: var(--green-800);
+  --reactive: var(--coral-500);
+  --reactive-text: var(--coral-600);
+  --reactive-soft: var(--coral-100);
+  --on-reactive-soft: var(--coral-800);
+
+  --warn: var(--amber-600);
+  --on-warn: #fff8e8;
+  --warn-soft: var(--amber-100);
+  --on-warn-soft: var(--amber-800);
+
+  --danger: var(--coral-500);
+  --on-danger: #ffffff;
+  --danger-text: var(--coral-600);
+  --danger-soft: var(--coral-100);
+  --on-danger-soft: var(--coral-800);
+
+  --info: var(--teal-600);
+  --info-soft: var(--teal-100);
+  --on-info-soft: var(--teal-800);
+
+  --success: var(--green-600);
+  --success-soft: var(--green-100);
+  --on-success-soft: var(--green-800);
+
+  /* ── Radius hierarchy: container > card > control > chip ── */
+  --r-container: 28px;
+  --r-card: 20px;
+  --r-control: 14px;
+  --r-chip: 999px;
+
+  /* ── Elevation: base / raised / floating ── */
+  --shadow-raised: 0 1px 2px rgb(14 27 87 / 0.05), 0 8px 24px -10px rgb(14 27 87 / 0.16);
+  --shadow-floating: 0 2px 4px rgb(14 27 87 / 0.06), 0 18px 44px -14px rgb(14 27 87 / 0.3);
+  --shadow-well: inset 0 1px 2px rgb(14 27 87 / 0.07), inset 0 0 0 1px rgb(14 27 87 / 0.06);
+  --glow-accent: 0 12px 28px -12px rgb(35 72 214 / 0.7);
+  --glow-sun: 0 12px 28px -12px rgb(224 168 0 / 0.75);
+  --glow-ink: 0 12px 32px -12px rgb(14 27 87 / 0.55);
+
+  /* ── Type ───────────────────────────────────────────────── */
+  --font-display: 'Fredoka', 'Nunito', system-ui, sans-serif;
+  --font-text: 'Plus Jakarta Sans', -apple-system, system-ui, sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, monospace;
+
+  /* scale: 11 / 13 / 15 / 17 / 22 / 34 / 56 / 80 */
+  --t-11: 11px;
+  --t-13: 13px;
+  --t-15: 15px;
+  --t-17: 17px;
+  --t-22: 22px;
+  --t-34: 34px;
+  --t-56: 56px;
+  --t-80: 80px;
+
+  /* ── Motion ─────────────────────────────────────────────── */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* ── Viewer chrome ──────────────────────────────────────── */
+  --stage: #e9edf9;
+  --glass: rgb(255 255 255 / 0.82);
+  --glass-edge: rgb(255 255 255 / 0.95);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-sunk: var(--bg-sunk);
+  --color-surface: var(--surface);
+  --color-raised: var(--surface-raised);
+  --color-high: var(--surface-high);
+  --color-tint: var(--surface-tint);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-ink: var(--ink);
+  --color-on-ink: var(--on-ink);
+  --color-on-ink-2: var(--on-ink-2);
+  --color-night: var(--night);
+  --color-on-night: var(--on-night);
+  --color-on-night-2: var(--on-night-2);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-text);
+  --color-on-accent: var(--on-accent);
+  --color-on-accent-2: var(--on-accent-2);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent-soft: var(--on-accent-soft);
+  --color-sun: var(--sun);
+  --color-on-sun: var(--on-sun);
+  --color-sun-ink: var(--sun-text);
+  --color-sun-soft: var(--sun-soft);
+  --color-on-sun-soft: var(--on-sun-soft);
+  --color-sun-light: var(--sun-light);
+  --color-calm: var(--calm);
+  --color-calm-ink: var(--calm-text);
+  --color-calm-soft: var(--calm-soft);
+  --color-on-calm-soft: var(--on-calm-soft);
+  --color-reactive: var(--reactive);
+  --color-reactive-ink: var(--reactive-text);
+  --color-reactive-soft: var(--reactive-soft);
+  --color-on-reactive-soft: var(--on-reactive-soft);
+  --color-warn: var(--warn);
+  --color-on-warn: var(--on-warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-on-warn-soft: var(--on-warn-soft);
+  --color-danger: var(--danger);
+  --color-on-danger: var(--on-danger);
+  --color-danger-text: var(--danger-text);
+  --color-danger-soft: var(--danger-soft);
+  --color-on-danger-soft: var(--on-danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-on-info-soft: var(--on-info-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-on-success-soft: var(--on-success-soft);
+  --color-stage: var(--stage);
+
+  --font-display: var(--font-display);
+  --font-text: var(--font-text);
+  --font-mono: var(--font-mono);
+
+  --radius-container: var(--r-container);
+  --radius-card: var(--r-card);
+  --radius-control: var(--r-control);
+  --radius-chip: var(--r-chip);
+
+  --shadow-raised: var(--shadow-raised);
+  --shadow-floating: var(--shadow-floating);
+}
